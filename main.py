@@ -49,7 +49,7 @@ def remove_substring(string, substring):
 def generate(text):
     prompt = get_prompt(text)
     with torch.autocast('cpu', dtype=torch.bfloat16):
-      
+        inputs = tokenizer(prompt, return_tensors="pt")
         outputs = model.generate(**inputs,
                                  max_new_tokens=512,
                                  eos_token_id=tokenizer.eos_token_id,
