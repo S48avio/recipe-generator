@@ -1,3 +1,4 @@
+streamlit
 datasets
 loralib
 sentencepiece
