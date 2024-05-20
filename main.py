@@ -4,15 +4,15 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 
 # notebook_login()
 from huggingface_hub.hf_api import HfFolder
-HfFolder.save_token('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')
+HfFolder.save_token('hf_xtyvSmSmLiMKYCKVmpZuaDvuhtYaagiCDnD')
 
 tokenizer = AutoTokenizer.from_pretrained("arya123321/arya",
-                                          token= "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",)
+                                          token= "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",)
 
 model = AutoModelForCausalLM.from_pretrained("arya123321/arya",
                                              device_map='auto',
                                              torch_dtype=torch.float16,
-                                             token="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",
+                                             token="hf_xtyvSmSgvyfytiMKYCKVmpZuaDrItYaagiCDnD",
                                             #  load_in_8bit=True,
                                             #load_in_4bit=True
                                              )
