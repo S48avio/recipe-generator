@@ -4,15 +4,15 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 
 # notebook_login()
 from huggingface_hub.hf_api import HfFolder
-HfFolder.save_token('hf_xtyvSmSmLiMKYCKVmpZuaDvuhtYaagiCDnD')
+HfFolder.save_token('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')
 
 tokenizer = AutoTokenizer.from_pretrained("arya123321/arya",
-                                          token= "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",)
+                                          token= "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",)
 
 model = AutoModelForCausalLM.from_pretrained("arya123321/arya",
-                                             device_map='auto',
+                                             device_map='cpu',
                                              torch_dtype=torch.float16,
-                                             token="hf_xtyvSmSgvyfytiMKYCKVmpZuaDrItYaagiCDnD",
+                                             token="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",
                                             #  load_in_8bit=True,
                                             #load_in_4bit=True
                                              )
@@ -48,8 +48,8 @@ def remove_substring(string, substring):
 
 def generate(text):
     prompt = get_prompt(text)
-    with torch.autocast('cuda', dtype=torch.bfloat16):
-        inputs = tokenizer(prompt, return_tensors="pt").to('cuda')
+    with torch.autocast('cpu', dtype=torch.bfloat16):
+      
         outputs = model.generate(**inputs,
                                  max_new_tokens=512,
                                  eos_token_id=tokenizer.eos_token_id,
